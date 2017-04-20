@@ -2,5 +2,235 @@
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
-    <events />
+    <events>
+        <variable constant="0" name="DIR_RIGHT" sid="322109553099901" static="0" type="number">0</variable>
+        <variable constant="0" name="DIR_DOWN" sid="762760934858522" static="0" type="number">90</variable>
+        <variable constant="0" name="DIR_LEFT" sid="448571638059929" static="0" type="number">180</variable>
+        <variable constant="0" name="DIR_UP" sid="771892753174380" static="0" type="number">270</variable>
+        <event-group description="" sid="699500736457447" title="Player 1 Controls">
+            <sub-events>
+                <event-block sid="402665505177417">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="664782922363151" type="Bman_F_f">
+                            <param id="0" name="Instance variable">Player</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="471601237781208">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="134136520634102" type="Keyboard">
+                                    <param id="0" name="Key">68 (D)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="383701953409298" type="Bman_F_f">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">DIR_RIGHT</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="850973953843907" type="Bman_F_f">
+                                    <param id="0" name="Animation">&quot;Right&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="295699500553230">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="136902559859750" type="Keyboard">
+                                    <param id="0" name="Key">87 (W)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="443471330126759" type="Bman_F_f">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">DIR_UP</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="817391133249081" type="Bman_F_f">
+                                    <param id="0" name="Animation">&quot;Up&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="914825207815742">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="620471350451795" type="Keyboard">
+                                    <param id="0" name="Key">65 (A)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="340147451631346" type="Bman_F_f">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">DIR_LEFT</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="956921284289370" type="Bman_F_f">
+                                    <param id="0" name="Animation">&quot;Left&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="621471881629920">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="395679152055940" type="Keyboard">
+                                    <param id="0" name="Key">83 (S)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="955662445804838" type="Bman_F_f">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">DIR_DOWN</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="712063067797702" type="Bman_F_f">
+                                    <param id="0" name="Animation">&quot;Down&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="572835174344832" title="Player 2 Controls">
+            <sub-events>
+                <event-block sid="379553512168525">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="809421117110180" type="Bman_F_f">
+                            <param id="0" name="Instance variable">Player</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="535392705049585">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="918410109717492" type="Keyboard">
+                                    <param id="0" name="Key">39 (Right arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="854646392581374" type="Bman_F_f">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">DIR_RIGHT</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="870780949198125" type="Bman_F_f">
+                                    <param id="0" name="Animation">&quot;Right&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="131304641059557">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="207521917485431" type="Keyboard">
+                                    <param id="0" name="Key">38 (Up arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="605591703614644" type="Bman_F_f">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">DIR_UP</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="561192342718609" type="Bman_F_f">
+                                    <param id="0" name="Animation">&quot;Up&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="881501088635281">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="825408879037101" type="Keyboard">
+                                    <param id="0" name="Key">37 (Left arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="187640293347014" type="Bman_F_f">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">DIR_LEFT</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="117525971710134" type="Bman_F_f">
+                                    <param id="0" name="Animation">&quot;Left&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="957051666743690">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="474978272136561" type="Keyboard">
+                                    <param id="0" name="Key">40 (Down arrow)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="482133305175466" type="Bman_F_f">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">DIR_DOWN</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="229396475293156" type="Bman_F_f">
+                                    <param id="0" name="Animation">&quot;Down&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="526000708896561" title="BombersMovement" />
+        <event-block sid="855070049867155">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="706119513678850" type="Bman_F_f">
+                    <param id="0" name="Instance variable">Direction</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">DIR_RIGHT</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="223130522693771" type="Bman_F_f">
+                    <param id="0" name="X">Self.X + Self.Speed * dt</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="917347148908113">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="391113574896086" type="Bman_F_f">
+                    <param id="0" name="Instance variable">Direction</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">DIR_LEFT</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="269303181053924" type="Bman_F_f">
+                    <param id="0" name="X">Self.X - Self.Speed * dt</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="972517270765574">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="148843519083378" type="Bman_F_f">
+                    <param id="0" name="Instance variable">Direction</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">DIR_UP</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" sid="456897326752064" type="Bman_F_f">
+                    <param id="0" name="Y">Self.Y - Self.Speed * dt</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="483665743783831">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="690642464813332" type="Bman_F_f">
+                    <param id="0" name="Instance variable">Direction</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">DIR_DOWN</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" sid="482214772536341" type="Bman_F_f">
+                    <param id="0" name="Y">Self.Y + Self.Speed * dt</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
 </c2eventsheet>
