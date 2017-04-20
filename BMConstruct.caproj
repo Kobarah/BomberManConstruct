@@ -8,7 +8,7 @@
     <author-website>http://</author-website>
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>2roxqhdj9xbx3</unique-id>
-    <saved-with-version>23900</saved-with-version>
+    <saved-with-version>24400</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
@@ -16,9 +16,12 @@
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
-    <used-effects />
+    <used-effects>
+        <effect author="Scirra" id="replacecolor">Replace color</effect>
+    </used-effects>
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
@@ -49,7 +52,7 @@
             <plugin id="TiledBg" />
             <texture original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Blocks\BackgroundTile.png" />
         </object-type>
-        <object-type name="Sprite" sid="422180696618072">
+        <object-type name="BloccoInd" sid="422180696618072">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Solid" sid="779136136569185">
@@ -62,7 +65,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Sprite2" sid="674361868130221">
+        <object-type name="BloccoDis" sid="674361868130221">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Solid" sid="764480866526271">
@@ -75,7 +78,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Bman_F_f" sid="924524982968913">
+        <object-type name="BomberMan" sid="924524982968913">
             <plugin id="Sprite" />
             <instance-variables>
                 <instance-variable name="Direction" sid="172258201421672" type="number" />
@@ -88,7 +91,15 @@
                 <behavior-type name="8Direction" sid="236997413129195">
                     <behavior id="EightDir" />
                 </behavior-type>
+                <behavior-type name="BoundToLayout" sid="863928572751267">
+                    <behavior id="bound" />
+                </behavior-type>
             </behaviors>
+            <effects>
+                <effect-type name="ReplaceColor">
+                    <effect id="replacecolor" />
+                </effect-type>
+            </effects>
             <animation-folder>
                 <animation framecount="8" loop="1" name="Right" pingpong="0" repeatcount="1" repeatto="0" sid="439698508111789" speed="16">
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f00.png">
@@ -381,6 +392,25 @@
         </object-type>
         <object-type name="Keyboard" sid="529772628915847">
             <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="Sprite" sid="564265113322543">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="616764024605825" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomb\Bomb_f01.png">
+                        <collision-poly>
+                            <point x="0.145833" y="0.145833" />
+                            <point x="0.5" y="0" />
+                            <point x="0.854167" y="0.145833" />
+                            <point x="1" y="0.5" />
+                            <point x="0.854167" y="0.854167" />
+                            <point x="0.5" y="1" />
+                            <point x="0.145833" y="0.854167" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />
