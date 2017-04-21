@@ -18,7 +18,6 @@
     <used-behaviors>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
-        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
     <used-effects>
@@ -85,7 +84,7 @@
             <instance-variables>
                 <instance-variable name="Direction" sid="172258201421672" type="number" />
                 <instance-variable name="Speed" sid="529171980174758" type="number" />
-                <instance-variable name="MoveTime" sid="880270009863926" type="number" />
+                <instance-variable name="MoveTime" sid="880270009863926" type="boolean" />
                 <instance-variable name="Timer" sid="600487305463773" type="number" />
                 <instance-variable name="Player" sid="478295979377257" type="number" />
                 <instance-variable name="Bombs" sid="243214351298525" type="number" />
@@ -95,8 +94,8 @@
                 <behavior-type name="8Direction" sid="236997413129195">
                     <behavior id="EightDir" />
                 </behavior-type>
-                <behavior-type name="BoundToLayout" sid="863928572751267">
-                    <behavior id="bound" />
+                <behavior-type name="Solid" sid="785685537344334">
+                    <behavior id="solid" />
                 </behavior-type>
             </behaviors>
             <effects>
@@ -380,8 +379,20 @@
                 </behavior-type>
             </behaviors>
             <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="616764024605825" speed="5">
+                <animation framecount="2" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="616764024605825" speed="7">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomb\Bomb_f01.png">
+                        <collision-poly>
+                            <point x="0.145833" y="0.145833" />
+                            <point x="0.5" y="0" />
+                            <point x="0.854167" y="0.145833" />
+                            <point x="1" y="0.5" />
+                            <point x="0.854167" y="0.854167" />
+                            <point x="0.5" y="1" />
+                            <point x="0.145833" y="0.854167" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Bomb\Bomb_f02.png">
                         <collision-poly>
                             <point x="0.145833" y="0.145833" />
                             <point x="0.5" y="0" />
