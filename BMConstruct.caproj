@@ -10,12 +10,14 @@
     <unique-id>2roxqhdj9xbx3</unique-id>
     <saved-with-version>24400</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
@@ -26,8 +28,8 @@
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
     <window-size>
-        <width>640</width>
-        <height>640</height>
+        <width>704</width>
+        <height>704</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
@@ -86,6 +88,8 @@
                 <instance-variable name="MoveTime" sid="880270009863926" type="number" />
                 <instance-variable name="Timer" sid="600487305463773" type="number" />
                 <instance-variable name="Player" sid="478295979377257" type="number" />
+                <instance-variable name="Bombs" sid="243214351298525" type="number" />
+                <instance-variable name="BombRange" sid="510385861482628" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="8Direction" sid="236997413129195">
@@ -104,287 +108,256 @@
                 <animation framecount="8" loop="1" name="Right" pingpong="0" repeatcount="1" repeatto="0" sid="439698508111789" speed="16">
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f00.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f01.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f02.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f03.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f04.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f05.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f06.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f07.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                 </animation>
                 <animation framecount="8" loop="1" name="Up" pingpong="0" repeatcount="1" repeatto="0" sid="482260109029866" speed="16">
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Back\Bman_B_f00.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Back\Bman_B_f01.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Back\Bman_B_f02.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Back\Bman_B_f03.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Back\Bman_B_f04.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Back\Bman_B_f05.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Back\Bman_B_f06.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Back\Bman_B_f07.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                 </animation>
                 <animation framecount="7" loop="1" name="Down" pingpong="0" repeatcount="1" repeatto="0" sid="769425244619007" speed="16">
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Front\Bman_F_f01.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Front\Bman_F_f02.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Front\Bman_F_f03.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Front\Bman_F_f04.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Front\Bman_F_f05.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Front\Bman_F_f06.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Front\Bman_F_f07.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                 </animation>
                 <animation framecount="8" loop="1" name="Left" pingpong="0" repeatcount="1" repeatto="0" sid="475597703414506" speed="16">
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f00.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f01.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f02.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f03.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f04.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f05.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f06.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                     <frame duration="1" hotspotX="0.53125" hotspotY="0.820313" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomberman\Side\Bman_F_f07.png">
                         <collision-poly>
-                            <point x="0.53125" y="0.632813" />
-                            <point x="0.84375" y="0.632813" />
-                            <point x="0.5" y="0.953125" />
-                            <point x="0.40625" y="0.796875" />
-                            <point x="0.171875" y="0.632813" />
+                            <point x="0.671875" y="0.625" />
+                            <point x="0.671875" y="0.921875" />
+                            <point x="0.40625" y="0.914063" />
+                            <point x="0.375" y="0.617188" />
                         </collision-poly>
                     </frame>
                 </animation>
@@ -393,8 +366,19 @@
         <object-type name="Keyboard" sid="529772628915847">
             <plugin id="Keyboard" />
         </object-type>
-        <object-type name="Sprite" sid="564265113322543">
+        <object-type name="Bomb" sid="564265113322543">
             <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Range" sid="998133340294374" type="number" />
+                <instance-variable name="Counter" sid="350178859543817" type="number" />
+                <instance-variable name="BomberUID" sid="438837913205537" type="number" />
+                <instance-variable name="SolidState" sid="342056253886685" type="boolean" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Solid" sid="504219115712778">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="616764024605825" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomb\Bomb_f01.png">
@@ -412,6 +396,26 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="Explosion" sid="214251033154727">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="864274190250324">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="5" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="745662239923546" speed="6">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_f00.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_f01.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_F02.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_F03.png" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_F04.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Function" sid="541821698012794">
+            <plugin id="Function" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
@@ -422,6 +426,7 @@
     </event-folder>
     <global-instances>
         <global-instance type="Keyboard" uid="56" />
+        <global-instance type="Function" uid="63" />
     </global-instances>
     <sounds-folder />
     <music-folder />
