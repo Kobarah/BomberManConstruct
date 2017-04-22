@@ -3,6 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable constant="0" name="CreateIndex" sid="745126196234520" static="0" type="number">-1</variable>
+        <variable constant="0" name="CreateBlock" sid="693287664978586" static="0" type="number">0</variable>
         <variable constant="0" name="InitialX1" sid="775566205556240" static="0" type="number">0</variable>
         <variable constant="0" name="InitialY1" sid="373675600106583" static="0" type="number">0</variable>
         <variable constant="0" name="InitialX2" sid="425637952290536" static="0" type="number">0</variable>
@@ -597,13 +599,13 @@
                 <event-block any="1" sid="619996380313062">
                     <conditions>
                         <condition id="0" name="On collision with another object" sid="155548709966860" type="BomberMan">
-                            <param id="0" name="Object">BloccoInd</param>
+                            <param id="0" name="Object">BloccoEst</param>
                         </condition>
                         <condition id="0" name="On collision with another object" sid="826009847340116" type="BomberMan">
                             <param id="0" name="Object">BloccoDis</param>
                         </condition>
-                        <condition id="0" name="On collision with another object" sid="287043004272425" type="BomberMan">
-                            <param id="0" name="Object">BomberMan</param>
+                        <condition id="0" name="On collision with another object" sid="641262874894334" type="BomberMan">
+                            <param id="0" name="Object">BloccoInd</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -645,6 +647,27 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="727027675407822">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="929156041361964" type="BomberMan">
+                            <param id="0" name="Object">BomberMan</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="976148652097140" type="BomberMan">
+                            <param id="0" name="Instance variable">Direction</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="905671834644872" type="BomberMan">
+                            <param id="0" name="X">int(self.X / 64) * 64 + 32</param>
+                            <param id="1" name="Y">int(self.Y / 64) * 64 + 32</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="519420207041860" type="BomberMan">
+                            <param id="0" name="Instance variable">MoveTime</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="483893758412708" title="Bombs">
@@ -674,9 +697,12 @@
                                 </action>
                             </actions>
                             <sub-events>
-                                <event-block sid="135198613808528">
+                                <event-block any="1" sid="135198613808528">
                                     <conditions>
                                         <condition id="1" name="Is overlapping another object" sid="820901271341741" type="Explosion">
+                                            <param id="0" name="Object">BloccoEst</param>
+                                        </condition>
+                                        <condition id="1" name="Is overlapping another object" sid="442035454118902" type="Explosion">
                                             <param id="0" name="Object">BloccoInd</param>
                                         </condition>
                                     </conditions>
@@ -869,5 +895,219 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-group description="" sid="392628056208442" title="Procedural Block Generation" />
+        <event-block sid="681317467034679">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="722948947865235" type="System" />
+            </conditions>
+            <actions>
+                <action id="-24" name="Move to top" sid="278467466590035" type="BomberMan" />
+            </actions>
+            <sub-events>
+                <event-block sid="713050492385298">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="960143829988642" type="System">
+                            <param id="0" name="Object">BloccoInd</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="875013394723926">
+                            <conditions>
+                                <condition id="-10" name="For" sid="387425631420995" type="System">
+                                    <param id="0" name="Name">&quot;Create&quot;</param>
+                                    <param id="1" name="Start index">0</param>
+                                    <param id="2" name="End index">7</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="540187162036479" type="System">
+                                    <param id="0" name="Variable">CreateBlock</param>
+                                    <param id="1" name="Value">floor(random(0, 2))</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="588249005599686">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="680109667130137" type="System">
+                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                        <condition id="-14" inverted="1" name="Compare variable" sid="926057733233484" type="System">
+                                            <param id="0" name="Variable">CreateBlock</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="402779882662774" type="System">
+                                            <param id="0" name="Object to create">BloccoDis</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">BloccoInd.X + 64</param>
+                                            <param id="3" name="Y">BloccoInd.Y</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="571890023049960">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="922159826891158" type="System">
+                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                        <condition id="-14" inverted="1" name="Compare variable" sid="576779983415926" type="System">
+                                            <param id="0" name="Variable">CreateBlock</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="194512957467142" type="System">
+                                            <param id="0" name="Object to create">BloccoDis</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">BloccoInd.X + 64</param>
+                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="629696716114981">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="786725166563277" type="System">
+                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">2</param>
+                                        </condition>
+                                        <condition id="-14" inverted="1" name="Compare variable" sid="198902087880903" type="System">
+                                            <param id="0" name="Variable">CreateBlock</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="876962117066180" type="System">
+                                            <param id="0" name="Object to create">BloccoDis</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">BloccoInd.X</param>
+                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="112598733940058">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="703341391214191" type="System">
+                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">3</param>
+                                        </condition>
+                                        <condition id="-14" inverted="1" name="Compare variable" sid="359881129562781" type="System">
+                                            <param id="0" name="Variable">CreateBlock</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="454020831745978" type="System">
+                                            <param id="0" name="Object to create">BloccoDis</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">BloccoInd.X - 64</param>
+                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="642796004115843">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="929344590583954" type="System">
+                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">4</param>
+                                        </condition>
+                                        <condition id="-14" inverted="1" name="Compare variable" sid="740234647518278" type="System">
+                                            <param id="0" name="Variable">CreateBlock</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="960165819228772" type="System">
+                                            <param id="0" name="Object to create">BloccoDis</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">BloccoInd.X - 64</param>
+                                            <param id="3" name="Y">BloccoInd.Y</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="357735597960989">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="304731805778485" type="System">
+                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">5</param>
+                                        </condition>
+                                        <condition id="-14" inverted="1" name="Compare variable" sid="781080890889024" type="System">
+                                            <param id="0" name="Variable">CreateBlock</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="502719487074044" type="System">
+                                            <param id="0" name="Object to create">BloccoDis</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">BloccoInd.X - 64</param>
+                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="869134810642407">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="745992546248464" type="System">
+                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">6</param>
+                                        </condition>
+                                        <condition id="-14" inverted="1" name="Compare variable" sid="251878704087459" type="System">
+                                            <param id="0" name="Variable">CreateBlock</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="810371863282043" type="System">
+                                            <param id="0" name="Object to create">BloccoDis</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">BloccoInd.X</param>
+                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="630285827131636">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="612196269177208" type="System">
+                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">7</param>
+                                        </condition>
+                                        <condition id="-14" inverted="1" name="Compare variable" sid="797021831496148" type="System">
+                                            <param id="0" name="Variable">CreateBlock</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="185865365940262" type="System">
+                                            <param id="0" name="Object to create">BloccoDis</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">BloccoInd.X + 64</param>
+                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
     </events>
 </c2eventsheet>

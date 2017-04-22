@@ -53,7 +53,7 @@
             <plugin id="TiledBg" />
             <texture original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Blocks\BackgroundTile.png" />
         </object-type>
-        <object-type name="BloccoInd" sid="422180696618072">
+        <object-type name="BloccoEst" sid="422180696618072">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="Solid" sid="779136136569185">
@@ -426,6 +426,14 @@
         </object-type>
         <object-type name="Function" sid="541821698012794">
             <plugin id="Function" />
+        </object-type>
+        <object-type name="BloccoInd" sid="780775087163164">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="777564102664064" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Blocks\SolidBlock.png" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />
