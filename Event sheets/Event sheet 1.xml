@@ -3,6 +3,10 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable constant="0" name="ContaBlu" sid="772736074339513" static="0" type="number">0</variable>
+        <variable constant="0" name="ContaRossi" sid="566914484901308" static="0" type="number">0</variable>
+        <variable constant="0" name="PlayTime" sid="900515025065658" static="0" type="number">0</variable>
+        <variable constant="0" name="BlocchiDist" sid="698588319718104" static="0" type="number">0</variable>
         <variable constant="0" name="CreateIndex" sid="745126196234520" static="0" type="number">-1</variable>
         <variable constant="0" name="CreateBlock" sid="693287664978586" static="0" type="number">0</variable>
         <variable constant="0" name="InitialX1" sid="775566205556240" static="0" type="number">0</variable>
@@ -16,10 +20,19 @@
         <event-block sid="229901085978369">
             <conditions>
                 <condition id="-1" name="Every tick" sid="858306512521565" type="System" />
+                <condition id="-8" name="Compare two values" sid="549015268876901" type="System">
+                    <param id="0" name="First value">timescale</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">1</param>
+                </condition>
             </conditions>
             <actions>
                 <action id="-11" name="Add to" sid="697179686760820" type="Bomb">
                     <param id="0" name="Instance variable">Counter</param>
+                    <param id="1" name="Value">dt</param>
+                </action>
+                <action id="-10" name="Add to" sid="725814609069315" type="System">
+                    <param id="0" name="Variable">PlayTime</param>
                     <param id="1" name="Value">dt</param>
                 </action>
             </actions>
@@ -32,6 +45,11 @@
                             <param id="0" name="Instance variable">Player</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="479084046006518" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
                         </condition>
                     </conditions>
                     <actions />
@@ -179,7 +197,7 @@
                             </conditions>
                             <actions>
                                 <action id="-1" name="Set X" sid="777062342685796" type="BomberMan">
-                                    <param id="0" name="X">Self.X + 2</param>
+                                    <param id="0" name="X">Self.X + BomberMan.Speed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -198,7 +216,7 @@
                             </conditions>
                             <actions>
                                 <action id="-1" name="Set X" sid="269303181053924" type="BomberMan">
-                                    <param id="0" name="X">Self.X - 2</param>
+                                    <param id="0" name="X">Self.X - BomberMan.Speed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -217,7 +235,7 @@
                             </conditions>
                             <actions>
                                 <action id="-2" name="Set Y" sid="456897326752064" type="BomberMan">
-                                    <param id="0" name="Y">Self.Y - 2</param>
+                                    <param id="0" name="Y">Self.Y - BomberMan.Speed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -236,7 +254,7 @@
                             </conditions>
                             <actions>
                                 <action id="-2" name="Set Y" sid="482214772536341" type="BomberMan">
-                                    <param id="0" name="Y">Self.Y + 2</param>
+                                    <param id="0" name="Y">Self.Y + BomberMan.Speed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -285,6 +303,10 @@
                                             <param id="2" name="X">int(BomberMan.X / 64) * 64 + 32</param>
                                             <param id="3" name="Y">int(BomberMan.Y / 64) * 64 + 32</param>
                                         </action>
+                                        <action id="-10" name="Set value" sid="674338432447369" type="Bomb">
+                                            <param id="0" name="Instance variable">PlayerN</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
                                         <action id="-25" name="Move to bottom" sid="543779088812734" type="Bomb" />
                                         <action behavior="Solid" id="0" name="Set enabled" sid="294354170884618" type="Bomb">
                                             <param id="0" name="State">0</param>
@@ -317,6 +339,11 @@
                             <param id="0" name="Instance variable">Player</param>
                             <param id="1" name="Comparison">0</param>
                             <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="254613657356543" type="System">
+                            <param id="0" name="First value">timescale</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
                         </condition>
                     </conditions>
                     <actions />
@@ -464,7 +491,7 @@
                             </conditions>
                             <actions>
                                 <action id="-1" name="Set X" sid="164843496861180" type="BomberMan">
-                                    <param id="0" name="X">Self.X + 2</param>
+                                    <param id="0" name="X">Self.X + BomberMan.Speed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -483,7 +510,7 @@
                             </conditions>
                             <actions>
                                 <action id="-1" name="Set X" sid="993876804496904" type="BomberMan">
-                                    <param id="0" name="X">Self.X - 2</param>
+                                    <param id="0" name="X">Self.X - BomberMan.Speed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -502,7 +529,7 @@
                             </conditions>
                             <actions>
                                 <action id="-2" name="Set Y" sid="600331234356403" type="BomberMan">
-                                    <param id="0" name="Y">Self.Y - 2</param>
+                                    <param id="0" name="Y">Self.Y - BomberMan.Speed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -521,7 +548,7 @@
                             </conditions>
                             <actions>
                                 <action id="-2" name="Set Y" sid="206731974296250" type="BomberMan">
-                                    <param id="0" name="Y">Self.Y + 2</param>
+                                    <param id="0" name="Y">Self.Y + BomberMan.Speed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -569,6 +596,10 @@
                                             <param id="1" name="Layer">1</param>
                                             <param id="2" name="X">int(BomberMan.X / 64) * 64 + 32</param>
                                             <param id="3" name="Y">int(BomberMan.Y / 64) * 64 + 32</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="751368925400263" type="Bomb">
+                                            <param id="0" name="Instance variable">PlayerN</param>
+                                            <param id="1" name="Value">1</param>
                                         </action>
                                         <action id="-25" name="Move to bottom" sid="890395738919770" type="Bomb" />
                                         <action behavior="Solid" id="0" name="Set enabled" sid="977944628843130" type="Bomb">
@@ -672,153 +703,351 @@
         </event-group>
         <event-group description="" sid="483893758412708" title="Bombs">
             <sub-events>
-                <event-block sid="303076549057453">
+                <event-block sid="343934710848487">
                     <conditions>
-                        <condition id="0" name="On function" sid="465726983838710" type="Function">
-                            <param id="0" name="Name">&quot;CreateExplosions&quot;</param>
+                        <condition id="-7" name="Compare instance variable" sid="520034972232769" type="Bomb">
+                            <param id="0" name="Instance variable">PlayerN</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="700292971818993">
+                        <event-block sid="303076549057453">
                             <conditions>
-                                <condition id="-10" name="For" sid="451622049431775" type="System">
-                                    <param id="0" name="Name">&quot;Range&quot;</param>
-                                    <param id="1" name="Start index">1</param>
-                                    <param id="2" name="End index">Function.Param(0)</param>
+                                <condition id="0" name="On function" sid="465726983838710" type="Function">
+                                    <param id="0" name="Name">&quot;CreateBlue&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="700292971818993">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="451622049431775" type="System">
+                                            <param id="0" name="Name">&quot;Range&quot;</param>
+                                            <param id="1" name="Start index">1</param>
+                                            <param id="2" name="End index">Function.Param(0)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="895905405913718" type="System">
+                                            <param id="0" name="Object to create">ColorBlue</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">Bomb.X + (Function.Param(1) * loopindex(&quot;Range&quot;))</param>
+                                            <param id="3" name="Y">Bomb.Y + (Function.Param(2) * loopindex(&quot;Range&quot;))</param>
+                                        </action>
+                                        <action id="-3" name="Create object" sid="258714999670912" type="System">
+                                            <param id="0" name="Object to create">VerniceBlu</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">Bomb.X + (Function.Param(1) * loopindex(&quot;Range&quot;))</param>
+                                            <param id="3" name="Y">Bomb.Y + (Function.Param(2) * loopindex(&quot;Range&quot;))</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block any="1" sid="135198613808528">
+                                            <conditions>
+                                                <condition id="1" name="Is overlapping another object" sid="820901271341741" type="ColorBlue">
+                                                    <param id="0" name="Object">BloccoEst</param>
+                                                </condition>
+                                                <condition id="1" name="Is overlapping another object" sid="442035454118902" type="ColorBlue">
+                                                    <param id="0" name="Object">BloccoInd</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Destroy" sid="427665523659864" type="ColorBlue" />
+                                                <action id="-24" name="Stop loop" sid="358224822302182" type="System" />
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="340903374887795">
+                                            <conditions>
+                                                <condition id="1" name="Is overlapping another object" sid="140350622503783" type="ColorBlue">
+                                                    <param id="0" name="Object">BloccoDis</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-24" name="Stop loop" sid="322374218847324" type="System" />
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="829237337916683">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="312661401490387" type="Bomb">
+                                    <param id="0" name="Instance variable">Counter</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">3</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-3" name="Create object" sid="895905405913718" type="System">
-                                    <param id="0" name="Object to create">Explosion</param>
-                                    <param id="1" name="Layer">1</param>
-                                    <param id="2" name="X">Bomb.X + (Function.Param(1) * loopindex(&quot;Range&quot;))</param>
-                                    <param id="3" name="Y">Bomb.Y + (Function.Param(2) * loopindex(&quot;Range&quot;))</param>
+                                <action id="-3" name="Create object" sid="182617434902709" type="System">
+                                    <param id="0" name="Object to create">ColorBlue</param>
+                                    <param id="1" name="Layer">0</param>
+                                    <param id="2" name="X">Bomb.X</param>
+                                    <param id="3" name="Y">Bomb.Y</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="611348464302542" type="System">
+                                    <param id="0" name="Object to create">VerniceBlu</param>
+                                    <param id="1" name="Layer">0</param>
+                                    <param id="2" name="X">Bomb.X</param>
+                                    <param id="3" name="Y">Bomb.Y</param>
                                 </action>
                             </actions>
                             <sub-events>
-                                <event-block any="1" sid="135198613808528">
+                                <event-block sid="263069432618558">
                                     <conditions>
-                                        <condition id="1" name="Is overlapping another object" sid="820901271341741" type="Explosion">
-                                            <param id="0" name="Object">BloccoEst</param>
-                                        </condition>
-                                        <condition id="1" name="Is overlapping another object" sid="442035454118902" type="Explosion">
-                                            <param id="0" name="Object">BloccoInd</param>
+                                        <condition id="-10" name="For" sid="612668699354634" type="System">
+                                            <param id="0" name="Name">&quot;DirectionFlame&quot;</param>
+                                            <param id="1" name="Start index">1</param>
+                                            <param id="2" name="End index">4</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action id="-9" name="Destroy" sid="427665523659864" type="Explosion" />
-                                        <action id="-24" name="Stop loop" sid="358224822302182" type="System" />
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="537119088781806">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="123337505478693" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="360707415656266" type="Function">
+                                                    <param id="0" name="Name">&quot;CreateBlue&quot;</param>
+                                                    <param id="1" name="Parameter {n}">Bomb.Range{###}64{###}0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="576074522994964">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="511518433941069" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="843239547315917" type="Function">
+                                                    <param id="0" name="Name">&quot;CreateBlue&quot;</param>
+                                                    <param id="1" name="Parameter {n}">Bomb.Range{###}0{###}64</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="417777312811109">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="513244070545289" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">3</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="551160018406449" type="Function">
+                                                    <param id="0" name="Name">&quot;CreateBlue&quot;</param>
+                                                    <param id="1" name="Parameter {n}">Bomb.Range{###}-64{###}0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="579795923169394">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="901824709258895" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">4</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="655795398574259" type="Function">
+                                                    <param id="0" name="Name">&quot;CreateBlue&quot;</param>
+                                                    <param id="1" name="Parameter {n}">Bomb.Range{###}0{###}-64</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
-                                <event-block sid="340903374887795">
-                                    <conditions>
-                                        <condition id="1" name="Is overlapping another object" sid="140350622503783" type="Explosion">
-                                            <param id="0" name="Object">BloccoDis</param>
-                                        </condition>
-                                    </conditions>
+                                <event-block sid="682605129848920">
+                                    <conditions />
                                     <actions>
-                                        <action id="-24" name="Stop loop" sid="322374218847324" type="System" />
+                                        <action id="-9" name="Destroy" sid="638385404513075" type="Bomb" />
                                     </actions>
                                 </event-block>
                             </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
-                <event-block sid="278818489485095">
+                <event-block sid="569939822766016">
                     <conditions>
-                        <condition id="-7" name="Compare instance variable" sid="542598628665354" type="Bomb">
-                            <param id="0" name="Instance variable">Counter</param>
-                            <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Value">3</param>
+                        <condition id="-7" name="Compare instance variable" sid="415074911546915" type="Bomb">
+                            <param id="0" name="Instance variable">PlayerN</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="-3" name="Create object" sid="769687292607929" type="System">
-                            <param id="0" name="Object to create">Explosion</param>
-                            <param id="1" name="Layer">1</param>
-                            <param id="2" name="X">Bomb.X</param>
-                            <param id="3" name="Y">Bomb.Y</param>
-                        </action>
-                    </actions>
+                    <actions />
                     <sub-events>
-                        <event-block sid="176788089574221">
+                        <event-block sid="755991331481759">
                             <conditions>
-                                <condition id="-10" name="For" sid="402881330044016" type="System">
-                                    <param id="0" name="Name">&quot;DirectionFlame&quot;</param>
-                                    <param id="1" name="Start index">1</param>
-                                    <param id="2" name="End index">4</param>
+                                <condition id="0" name="On function" sid="544102616521457" type="Function">
+                                    <param id="0" name="Name">&quot;CreateRed&quot;</param>
                                 </condition>
                             </conditions>
                             <actions />
                             <sub-events>
-                                <event-block sid="130485550559888">
+                                <event-block sid="851299194721371">
                                     <conditions>
-                                        <condition id="-8" name="Compare two values" sid="425359379563970" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">1</param>
+                                        <condition id="-10" name="For" sid="112403810575024" type="System">
+                                            <param id="0" name="Name">&quot;Range&quot;</param>
+                                            <param id="1" name="Start index">1</param>
+                                            <param id="2" name="End index">Function.Param(0)</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="0" name="Call function" sid="141637563828518" type="Function">
-                                            <param id="0" name="Name">&quot;CreateExplosions&quot;</param>
-                                            <param id="1" name="Parameter {n}">Bomb.Range{###}64{###}0</param>
+                                        <action id="-3" name="Create object" sid="402343941713529" type="System">
+                                            <param id="0" name="Object to create">ColorRed</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">Bomb.X + (Function.Param(1) * loopindex(&quot;Range&quot;))</param>
+                                            <param id="3" name="Y">Bomb.Y + (Function.Param(2) * loopindex(&quot;Range&quot;))</param>
+                                        </action>
+                                        <action id="-3" name="Create object" sid="679515300440923" type="System">
+                                            <param id="0" name="Object to create">VerniceRossa</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="X">Bomb.X + (Function.Param(1) * loopindex(&quot;Range&quot;))</param>
+                                            <param id="3" name="Y">Bomb.Y + (Function.Param(2) * loopindex(&quot;Range&quot;))</param>
                                         </action>
                                     </actions>
-                                </event-block>
-                                <event-block sid="209268643863680">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="836224391436038" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">2</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="0" name="Call function" sid="550568031334449" type="Function">
-                                            <param id="0" name="Name">&quot;CreateExplosions&quot;</param>
-                                            <param id="1" name="Parameter {n}">Bomb.Range{###}0{###}64</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="971680662320947">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="125834496002466" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">3</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="0" name="Call function" sid="172769788579998" type="Function">
-                                            <param id="0" name="Name">&quot;CreateExplosions&quot;</param>
-                                            <param id="1" name="Parameter {n}">Bomb.Range{###}-64{###}0</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="559484858841830">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="259235644487908" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">4</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="0" name="Call function" sid="169757183218045" type="Function">
-                                            <param id="0" name="Name">&quot;CreateExplosions&quot;</param>
-                                            <param id="1" name="Parameter {n}">Bomb.Range{###}0{###}-64</param>
-                                        </action>
-                                    </actions>
+                                    <sub-events>
+                                        <event-block any="1" sid="968591227356868">
+                                            <conditions>
+                                                <condition id="1" name="Is overlapping another object" sid="750009459457716" type="ColorRed">
+                                                    <param id="0" name="Object">BloccoEst</param>
+                                                </condition>
+                                                <condition id="1" name="Is overlapping another object" sid="490309140988652" type="ColorRed">
+                                                    <param id="0" name="Object">BloccoInd</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Destroy" sid="563413769996059" type="ColorRed" />
+                                                <action id="-24" name="Stop loop" sid="537972331180291" type="System" />
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="226557611477536">
+                                            <conditions>
+                                                <condition id="1" name="Is overlapping another object" sid="731779188115269" type="ColorRed">
+                                                    <param id="0" name="Object">BloccoDis</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-24" name="Stop loop" sid="417204354405910" type="System" />
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block sid="827278596782319">
-                            <conditions />
+                        <event-block sid="278818489485095">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="542598628665354" type="Bomb">
+                                    <param id="0" name="Instance variable">Counter</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
                             <actions>
-                                <action id="-9" name="Destroy" sid="235911973234379" type="Bomb" />
+                                <action id="-3" name="Create object" sid="769687292607929" type="System">
+                                    <param id="0" name="Object to create">ColorRed</param>
+                                    <param id="1" name="Layer">0</param>
+                                    <param id="2" name="X">Bomb.X</param>
+                                    <param id="3" name="Y">Bomb.Y</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="376052909047298" type="System">
+                                    <param id="0" name="Object to create">VerniceRossa</param>
+                                    <param id="1" name="Layer">0</param>
+                                    <param id="2" name="X">Bomb.X</param>
+                                    <param id="3" name="Y">Bomb.Y</param>
+                                </action>
                             </actions>
+                            <sub-events>
+                                <event-block sid="176788089574221">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="402881330044016" type="System">
+                                            <param id="0" name="Name">&quot;DirectionFlame&quot;</param>
+                                            <param id="1" name="Start index">1</param>
+                                            <param id="2" name="End index">4</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="130485550559888">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="425359379563970" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="141637563828518" type="Function">
+                                                    <param id="0" name="Name">&quot;CreateRed&quot;</param>
+                                                    <param id="1" name="Parameter {n}">Bomb.Range{###}64{###}0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="209268643863680">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="836224391436038" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="550568031334449" type="Function">
+                                                    <param id="0" name="Name">&quot;CreateRed&quot;</param>
+                                                    <param id="1" name="Parameter {n}">Bomb.Range{###}0{###}64</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="971680662320947">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="125834496002466" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">3</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="172769788579998" type="Function">
+                                                    <param id="0" name="Name">&quot;CreateRed&quot;</param>
+                                                    <param id="1" name="Parameter {n}">Bomb.Range{###}-64{###}0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="559484858841830">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="259235644487908" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;DirectionFlame&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">4</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="169757183218045" type="Function">
+                                                    <param id="0" name="Name">&quot;CreateRed&quot;</param>
+                                                    <param id="1" name="Parameter {n}">Bomb.Range{###}0{###}-64</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="827278596782319">
+                                    <conditions />
+                                    <actions>
+                                        <action id="-9" name="Destroy" sid="235911973234379" type="Bomb" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
@@ -852,262 +1081,768 @@
                         </action>
                     </actions>
                 </event-block>
+                <event-block sid="479754505374227">
+                    <conditions>
+                        <condition id="-18" name="On created" sid="684176975322477" type="ColorBlue" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="169841517822397" type="System">
+                            <param id="0" name="Seconds">dt/5</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="704243379038346" type="ColorBlue">
+                            <param id="0" name="Instance variable">Contamina</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="659166934962182">
+                    <conditions>
+                        <condition id="-18" name="On created" sid="717434005261884" type="ColorRed" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="175255213043650" type="System">
+                            <param id="0" name="Seconds">dt/5</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="679942706252121" type="ColorRed">
+                            <param id="0" name="Instance variable">Contamina</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="165531329581285" title="Explosions">
             <sub-events>
-                <event-block sid="818711543867687">
+                <event-block any="1" sid="605442505657543">
                     <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="143567827452965" type="Explosion">
-                            <param id="0" name="Object">BomberMan</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Destroy" sid="869944699459407" type="BomberMan" />
-                    </actions>
-                </event-block>
-                <event-block sid="605442505657543">
-                    <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="718650484861596" type="Explosion">
+                        <condition id="1" name="Is overlapping another object" sid="718650484861596" type="ColorBlue">
                             <param id="0" name="Object">BloccoDis</param>
                         </condition>
-                        <condition id="-10" name="Compare opacity" sid="535055065489870" type="Explosion">
-                            <param id="0" name="Comparison">3</param>
-                            <param id="1" name="Opacity">10</param>
+                        <condition id="1" name="Is overlapping another object" sid="533510107685952" type="ColorRed">
+                            <param id="0" name="Object">BloccoDis</param>
                         </condition>
                     </conditions>
                     <actions>
                         <action id="-9" name="Destroy" sid="150721342512725" type="BloccoDis" />
                     </actions>
                 </event-block>
-                <event-block sid="473652827936231">
+                <event-block sid="559461732759855">
                     <conditions>
-                        <condition id="1" name="Is overlapping another object" sid="440910178631727" type="Explosion">
-                            <param id="0" name="Object">Bomb</param>
-                        </condition>
+                        <condition id="-19" name="On destroyed" sid="824211414141318" type="BloccoDis" />
                     </conditions>
                     <actions>
-                        <action id="-10" name="Set value" sid="572699336916319" type="Bomb">
-                            <param id="0" name="Instance variable">Counter</param>
-                            <param id="1" name="Value">3</param>
+                        <action id="-10" name="Set value" sid="887605702348593" type="BloccoDis">
+                            <param id="0" name="Instance variable">Drop</param>
+                            <param id="1" name="Value">floor(random(0, 7))</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="451828519222164" type="System">
+                            <param id="0" name="Variable">BlocchiDist</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="417347150476130">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="724628602763849" type="BloccoDis">
+                                    <param id="0" name="Instance variable">Drop</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="182344463124694" type="System">
+                                    <param id="0" name="Object to create">BombUp</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">BloccoDis.X</param>
+                                    <param id="3" name="Y">BloccoDis.Y</param>
+                                </action>
+                                <action id="-25" name="Move to bottom" sid="480830582987248" type="BombUp" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="710064320032068">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="516956283437443" type="BloccoDis">
+                                    <param id="0" name="Instance variable">Drop</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="293303340616460" type="System">
+                                    <param id="0" name="Object to create">RangeUp</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">BloccoDis.X</param>
+                                    <param id="3" name="Y">BloccoDis.Y</param>
+                                </action>
+                                <action id="-25" name="Move to bottom" sid="644076780338877" type="RangeUp" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="377319181366759">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="129460489730113" type="BloccoDis">
+                                    <param id="0" name="Instance variable">Drop</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="718616648590438" type="System">
+                                    <param id="0" name="Object to create">SpeedUp</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">BloccoDis.X</param>
+                                    <param id="3" name="Y">BloccoDis.Y</param>
+                                </action>
+                                <action id="-25" name="Move to bottom" sid="116816844267150" type="SpeedUp" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
-            </sub-events>
-        </event-group>
-        <event-group description="" sid="392628056208442" title="Procedural Block Generation" />
-        <event-block sid="681317467034679">
-            <conditions>
-                <condition id="-2" name="On start of layout" sid="722948947865235" type="System" />
-            </conditions>
-            <actions>
-                <action id="-24" name="Move to top" sid="278467466590035" type="BomberMan" />
-            </actions>
-            <sub-events>
-                <event-block sid="713050492385298">
+                <event-block sid="499656888192304">
                     <conditions>
-                        <condition id="-11" name="For Each" sid="960143829988642" type="System">
-                            <param id="0" name="Object">BloccoInd</param>
+                        <condition id="1" name="Is overlapping another object" sid="112634656210437" type="ColorBlue">
+                            <param id="0" name="Object">ColorRed</param>
                         </condition>
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="875013394723926">
+                        <event-block sid="877558566094351">
                             <conditions>
-                                <condition id="-10" name="For" sid="387425631420995" type="System">
-                                    <param id="0" name="Name">&quot;Create&quot;</param>
-                                    <param id="1" name="Start index">0</param>
-                                    <param id="2" name="End index">7</param>
+                                <condition id="-8" name="Is boolean instance variable set" sid="577204781663583" type="ColorBlue">
+                                    <param id="0" name="Instance variable">Contamina</param>
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-9" name="Set value" sid="540187162036479" type="System">
-                                    <param id="0" name="Variable">CreateBlock</param>
-                                    <param id="1" name="Value">floor(random(0, 2))</param>
+                                <action id="-9" name="Destroy" sid="464149477374531" type="ColorRed" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="995198701368709">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="677428180827472" type="ColorRed">
+                                    <param id="0" name="Instance variable">Contamina</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="195866215901235" type="ColorBlue" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block any="1" sid="822163146490922">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="265567715611862" type="ColorBlue">
+                            <param id="0" name="Object">BomberMan</param>
+                        </condition>
+                        <condition id="1" name="Is overlapping another object" sid="863963387177073" type="ColorRed">
+                            <param id="0" name="Object">BomberMan</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="656200162668693">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="740344900776340" type="ColorBlue">
+                                    <param id="0" name="Instance variable">Contamina</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="726311159351996" type="BomberMan">
+                                    <param id="0" name="Instance variable">Player</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="962820217418172" type="BomberMan">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">self.Speed / 2</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="704830694745034" type="System">
+                                    <param id="0" name="Seconds">2</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="912181860776272" type="BomberMan">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">Self.Speed * 2</param>
                                 </action>
                             </actions>
+                        </event-block>
+                        <event-block sid="917615127660999">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="707792018446183" type="ColorRed">
+                                    <param id="0" name="Instance variable">Contamina</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="338596602154923" type="BomberMan">
+                                    <param id="0" name="Instance variable">Player</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="207421728430076" type="BomberMan">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">self.Speed / 2</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="546903142032228" type="System">
+                                    <param id="0" name="Seconds">2</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="846307998199290" type="BomberMan">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">Self.Speed * 2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="392628056208442" title="Procedural Block Generation">
+            <sub-events>
+                <event-block sid="681317467034679">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="722948947865235" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-24" name="Move to top" sid="278467466590035" type="BomberMan" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="713050492385298">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="960143829988642" type="System">
+                                    <param id="0" name="Object">BloccoInd</param>
+                                </condition>
+                            </conditions>
+                            <actions />
                             <sub-events>
-                                <event-block sid="588249005599686">
+                                <event-block sid="875013394723926">
                                     <conditions>
-                                        <condition id="-8" name="Compare two values" sid="680109667130137" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">0</param>
-                                        </condition>
-                                        <condition id="-14" inverted="1" name="Compare variable" sid="926057733233484" type="System">
-                                            <param id="0" name="Variable">CreateBlock</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
+                                        <condition id="-10" name="For" sid="387425631420995" type="System">
+                                            <param id="0" name="Name">&quot;Create&quot;</param>
+                                            <param id="1" name="Start index">0</param>
+                                            <param id="2" name="End index">7</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-3" name="Create object" sid="402779882662774" type="System">
-                                            <param id="0" name="Object to create">BloccoDis</param>
-                                            <param id="1" name="Layer">0</param>
-                                            <param id="2" name="X">BloccoInd.X + 64</param>
-                                            <param id="3" name="Y">BloccoInd.Y</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="571890023049960">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="922159826891158" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">1</param>
-                                        </condition>
-                                        <condition id="-14" inverted="1" name="Compare variable" sid="576779983415926" type="System">
+                                        <action id="-9" name="Set value" sid="540187162036479" type="System">
                                             <param id="0" name="Variable">CreateBlock</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="194512957467142" type="System">
-                                            <param id="0" name="Object to create">BloccoDis</param>
-                                            <param id="1" name="Layer">0</param>
-                                            <param id="2" name="X">BloccoInd.X + 64</param>
-                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                            <param id="1" name="Value">floor(random(0, 2))</param>
                                         </action>
                                     </actions>
-                                </event-block>
-                                <event-block sid="629696716114981">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="786725166563277" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">2</param>
-                                        </condition>
-                                        <condition id="-14" inverted="1" name="Compare variable" sid="198902087880903" type="System">
-                                            <param id="0" name="Variable">CreateBlock</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="876962117066180" type="System">
-                                            <param id="0" name="Object to create">BloccoDis</param>
-                                            <param id="1" name="Layer">0</param>
-                                            <param id="2" name="X">BloccoInd.X</param>
-                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="112598733940058">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="703341391214191" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">3</param>
-                                        </condition>
-                                        <condition id="-14" inverted="1" name="Compare variable" sid="359881129562781" type="System">
-                                            <param id="0" name="Variable">CreateBlock</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="454020831745978" type="System">
-                                            <param id="0" name="Object to create">BloccoDis</param>
-                                            <param id="1" name="Layer">0</param>
-                                            <param id="2" name="X">BloccoInd.X - 64</param>
-                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="642796004115843">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="929344590583954" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">4</param>
-                                        </condition>
-                                        <condition id="-14" inverted="1" name="Compare variable" sid="740234647518278" type="System">
-                                            <param id="0" name="Variable">CreateBlock</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="960165819228772" type="System">
-                                            <param id="0" name="Object to create">BloccoDis</param>
-                                            <param id="1" name="Layer">0</param>
-                                            <param id="2" name="X">BloccoInd.X - 64</param>
-                                            <param id="3" name="Y">BloccoInd.Y</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="357735597960989">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="304731805778485" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">5</param>
-                                        </condition>
-                                        <condition id="-14" inverted="1" name="Compare variable" sid="781080890889024" type="System">
-                                            <param id="0" name="Variable">CreateBlock</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="502719487074044" type="System">
-                                            <param id="0" name="Object to create">BloccoDis</param>
-                                            <param id="1" name="Layer">0</param>
-                                            <param id="2" name="X">BloccoInd.X - 64</param>
-                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="869134810642407">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="745992546248464" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">6</param>
-                                        </condition>
-                                        <condition id="-14" inverted="1" name="Compare variable" sid="251878704087459" type="System">
-                                            <param id="0" name="Variable">CreateBlock</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="810371863282043" type="System">
-                                            <param id="0" name="Object to create">BloccoDis</param>
-                                            <param id="1" name="Layer">0</param>
-                                            <param id="2" name="X">BloccoInd.X</param>
-                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="630285827131636">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="612196269177208" type="System">
-                                            <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">7</param>
-                                        </condition>
-                                        <condition id="-14" inverted="1" name="Compare variable" sid="797021831496148" type="System">
-                                            <param id="0" name="Variable">CreateBlock</param>
-                                            <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">0</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Create object" sid="185865365940262" type="System">
-                                            <param id="0" name="Object to create">BloccoDis</param>
-                                            <param id="1" name="Layer">0</param>
-                                            <param id="2" name="X">BloccoInd.X + 64</param>
-                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
-                                        </action>
-                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="588249005599686">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="680109667130137" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-14" inverted="1" name="Compare variable" sid="926057733233484" type="System">
+                                                    <param id="0" name="Variable">CreateBlock</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="947503971366816" type="System">
+                                                    <param id="0" name="Object to create">Check</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">BloccoInd.X + 64</param>
+                                                    <param id="3" name="Y">BloccoInd.Y</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="833460277382890">
+                                                    <conditions>
+                                                        <condition id="1" inverted="1" name="Is overlapping another object" sid="127775793060618" type="Check">
+                                                            <param id="0" name="Object">BloccoDis</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Create object" sid="402779882662774" type="System">
+                                                            <param id="0" name="Object to create">BloccoDis</param>
+                                                            <param id="1" name="Layer">0</param>
+                                                            <param id="2" name="X">BloccoInd.X + 64</param>
+                                                            <param id="3" name="Y">BloccoInd.Y</param>
+                                                        </action>
+                                                        <action id="-10" name="Add to" sid="720367839426374" type="System">
+                                                            <param id="0" name="Variable">BlocchiDist</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="571890023049960">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="922159826891158" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">1</param>
+                                                </condition>
+                                                <condition id="-14" inverted="1" name="Compare variable" sid="576779983415926" type="System">
+                                                    <param id="0" name="Variable">CreateBlock</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="987977905584542" type="System">
+                                                    <param id="0" name="Object to create">Check</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">BloccoInd.X + 64</param>
+                                                    <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="568178364140605">
+                                                    <conditions>
+                                                        <condition id="1" inverted="1" name="Is overlapping another object" sid="193542375168283" type="Check">
+                                                            <param id="0" name="Object">BloccoDis</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Create object" sid="194512957467142" type="System">
+                                                            <param id="0" name="Object to create">BloccoDis</param>
+                                                            <param id="1" name="Layer">0</param>
+                                                            <param id="2" name="X">BloccoInd.X + 64</param>
+                                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                                        </action>
+                                                        <action id="-10" name="Add to" sid="258644430814441" type="System">
+                                                            <param id="0" name="Variable">BlocchiDist</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="629696716114981">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="786725166563277" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">2</param>
+                                                </condition>
+                                                <condition id="-14" inverted="1" name="Compare variable" sid="198902087880903" type="System">
+                                                    <param id="0" name="Variable">CreateBlock</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="240717406307169" type="System">
+                                                    <param id="0" name="Object to create">Check</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">BloccoInd.X</param>
+                                                    <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="952495467823697">
+                                                    <conditions>
+                                                        <condition id="1" inverted="1" name="Is overlapping another object" sid="879631604217733" type="Check">
+                                                            <param id="0" name="Object">BloccoDis</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Create object" sid="876962117066180" type="System">
+                                                            <param id="0" name="Object to create">BloccoDis</param>
+                                                            <param id="1" name="Layer">0</param>
+                                                            <param id="2" name="X">BloccoInd.X</param>
+                                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                                        </action>
+                                                        <action id="-10" name="Add to" sid="369862143835281" type="System">
+                                                            <param id="0" name="Variable">BlocchiDist</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="112598733940058">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="703341391214191" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">3</param>
+                                                </condition>
+                                                <condition id="-14" inverted="1" name="Compare variable" sid="359881129562781" type="System">
+                                                    <param id="0" name="Variable">CreateBlock</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="859791781522199" type="System">
+                                                    <param id="0" name="Object to create">Check</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">BloccoInd.X - 64</param>
+                                                    <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="145289057710787">
+                                                    <conditions>
+                                                        <condition id="1" inverted="1" name="Is overlapping another object" sid="416576084934490" type="Check">
+                                                            <param id="0" name="Object">BloccoDis</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Create object" sid="454020831745978" type="System">
+                                                            <param id="0" name="Object to create">BloccoDis</param>
+                                                            <param id="1" name="Layer">0</param>
+                                                            <param id="2" name="X">BloccoInd.X - 64</param>
+                                                            <param id="3" name="Y">BloccoInd.Y + 64</param>
+                                                        </action>
+                                                        <action id="-10" name="Add to" sid="837039511987087" type="System">
+                                                            <param id="0" name="Variable">BlocchiDist</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="642796004115843">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="929344590583954" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">4</param>
+                                                </condition>
+                                                <condition id="-14" inverted="1" name="Compare variable" sid="740234647518278" type="System">
+                                                    <param id="0" name="Variable">CreateBlock</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="588112106423438" type="System">
+                                                    <param id="0" name="Object to create">Check</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">BloccoInd.X - 64</param>
+                                                    <param id="3" name="Y">BloccoInd.Y</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="769620709493125">
+                                                    <conditions>
+                                                        <condition id="1" inverted="1" name="Is overlapping another object" sid="940807776806316" type="Check">
+                                                            <param id="0" name="Object">BloccoDis</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Create object" sid="960165819228772" type="System">
+                                                            <param id="0" name="Object to create">BloccoDis</param>
+                                                            <param id="1" name="Layer">0</param>
+                                                            <param id="2" name="X">BloccoInd.X - 64</param>
+                                                            <param id="3" name="Y">BloccoInd.Y</param>
+                                                        </action>
+                                                        <action id="-10" name="Add to" sid="452999202927445" type="System">
+                                                            <param id="0" name="Variable">BlocchiDist</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="357735597960989">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="304731805778485" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">5</param>
+                                                </condition>
+                                                <condition id="-14" inverted="1" name="Compare variable" sid="781080890889024" type="System">
+                                                    <param id="0" name="Variable">CreateBlock</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="969049625766406" type="System">
+                                                    <param id="0" name="Object to create">Check</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">BloccoInd.X - 64</param>
+                                                    <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="253064333911000">
+                                                    <conditions>
+                                                        <condition id="1" inverted="1" name="Is overlapping another object" sid="736912953034594" type="Check">
+                                                            <param id="0" name="Object">BloccoDis</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Create object" sid="502719487074044" type="System">
+                                                            <param id="0" name="Object to create">BloccoDis</param>
+                                                            <param id="1" name="Layer">0</param>
+                                                            <param id="2" name="X">BloccoInd.X - 64</param>
+                                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                                        </action>
+                                                        <action id="-10" name="Add to" sid="374385419699130" type="System">
+                                                            <param id="0" name="Variable">BlocchiDist</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="869134810642407">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="745992546248464" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">6</param>
+                                                </condition>
+                                                <condition id="-14" inverted="1" name="Compare variable" sid="251878704087459" type="System">
+                                                    <param id="0" name="Variable">CreateBlock</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="330499805026207" type="System">
+                                                    <param id="0" name="Object to create">Check</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">BloccoInd.X</param>
+                                                    <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="740381164885406">
+                                                    <conditions>
+                                                        <condition id="1" inverted="1" name="Is overlapping another object" sid="969490802601406" type="Check">
+                                                            <param id="0" name="Object">BloccoDis</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Create object" sid="810371863282043" type="System">
+                                                            <param id="0" name="Object to create">BloccoDis</param>
+                                                            <param id="1" name="Layer">0</param>
+                                                            <param id="2" name="X">BloccoInd.X</param>
+                                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                                        </action>
+                                                        <action id="-10" name="Add to" sid="430880002803708" type="System">
+                                                            <param id="0" name="Variable">BlocchiDist</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="630285827131636">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="612196269177208" type="System">
+                                                    <param id="0" name="First value">loopindex(&quot;Create&quot;)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">7</param>
+                                                </condition>
+                                                <condition id="-14" inverted="1" name="Compare variable" sid="797021831496148" type="System">
+                                                    <param id="0" name="Variable">CreateBlock</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="340655639840012" type="System">
+                                                    <param id="0" name="Object to create">Check</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="X">BloccoInd.X + 64</param>
+                                                    <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="381567978228239">
+                                                    <conditions>
+                                                        <condition id="1" inverted="1" name="Is overlapping another object" sid="204283234319015" type="Check">
+                                                            <param id="0" name="Object">BloccoDis</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-3" name="Create object" sid="185865365940262" type="System">
+                                                            <param id="0" name="Object to create">BloccoDis</param>
+                                                            <param id="1" name="Layer">0</param>
+                                                            <param id="2" name="X">BloccoInd.X + 64</param>
+                                                            <param id="3" name="Y">BloccoInd.Y - 64</param>
+                                                        </action>
+                                                        <action id="-10" name="Add to" sid="430523171575725" type="System">
+                                                            <param id="0" name="Variable">BlocchiDist</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                             </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
             </sub-events>
+        </event-group>
+        <event-group description="" sid="813237173443674" title="Drops">
+            <sub-events>
+                <event-block sid="670715371976678">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="387048219714858" type="BomberMan">
+                            <param id="0" name="Object">BombUp</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="732250401261033" type="BombUp" />
+                        <action id="-11" name="Add to" sid="321792957406172" type="BomberMan">
+                            <param id="0" name="Instance variable">Bombs</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="985686741726769">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="250963865874571" type="BomberMan">
+                            <param id="0" name="Object">RangeUp</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="823311783227904" type="RangeUp" />
+                        <action id="-11" name="Add to" sid="450117891063790" type="BomberMan">
+                            <param id="0" name="Instance variable">BombRange</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="945890674931901">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="111820205252545" type="BomberMan">
+                            <param id="0" name="Object">SpeedUp</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="809619046355267" type="SpeedUp" />
+                        <action id="-10" name="Set value" sid="808702155143989" type="BomberMan">
+                            <param id="0" name="Instance variable">Speed</param>
+                            <param id="1" name="Value">Self.Speed * 2</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="461478576802844" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="875555929053500" type="BomberMan">
+                            <param id="0" name="Instance variable">Speed</param>
+                            <param id="1" name="Value">Self.Speed / 2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="727168523696417" title="WinConditions">
+            <sub-events>
+                <event-block sid="681051518428710">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="378284774597516" type="System">
+                            <param id="0" name="Variable">PlayTime</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">180</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set time scale" sid="549269979175246" type="System">
+                            <param id="0" name="Time scale">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="959794703004909">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="432094424136973" type="System">
+                                    <param id="0" name="Object">ColorRed</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="522585163038771" type="System">
+                                    <param id="0" name="Variable">ContaRossi</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="566644083471994">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="990627708544322" type="System">
+                                    <param id="0" name="Object">ColorBlue</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="347524070236105" type="System">
+                                    <param id="0" name="Variable">ContaBlu</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="310999805315242">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="824343344607044" type="System">
+                                    <param id="0" name="Variable">ContaRossi</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">ContaBlu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="758073084456921" type="System">
+                                    <param id="0" name="Object to create">P2Wins</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">320</param>
+                                    <param id="3" name="Y">320</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="298798007780260">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="531448469847085" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="956943238438872" type="System">
+                                    <param id="0" name="Object to create">P1Wins</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="X">320</param>
+                                    <param id="3" name="Y">320</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="872205786052989">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="610028857101142" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="872128206596100" type="Count">
+                    <param id="0" name="Text">&quot;3&quot;</param>
+                </action>
+                <action id="-16" name="Wait" sid="100586714049644" type="System">
+                    <param id="0" name="Seconds">1</param>
+                </action>
+                <action id="0" name="Set text" sid="676827489020421" type="Count">
+                    <param id="0" name="Text">&quot;2&quot;</param>
+                </action>
+                <action id="-16" name="Wait" sid="882481545499524" type="System">
+                    <param id="0" name="Seconds">1</param>
+                </action>
+                <action id="0" name="Set text" sid="329839318064844" type="Count">
+                    <param id="0" name="Text">&quot;1&quot;</param>
+                </action>
+                <action id="-16" name="Wait" sid="613914760550480" type="System">
+                    <param id="0" name="Seconds">1</param>
+                </action>
+                <action id="0" name="Set text" sid="922094149005650" type="Count">
+                    <param id="0" name="Text">&quot;Let&apos;s Color!&quot;</param>
+                </action>
+                <action id="-16" name="Wait" sid="119595935823638" type="System">
+                    <param id="0" name="Seconds">1</param>
+                </action>
+                <action id="-13" name="Set boolean" sid="375653581787290" type="BomberMan">
+                    <param id="0" name="Instance variable">MoveTime</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="964488492711803" type="Count">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
         </event-block>
     </events>
 </c2eventsheet>

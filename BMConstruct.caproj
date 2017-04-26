@@ -13,11 +13,13 @@
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
         <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
     <used-effects>
@@ -68,9 +70,15 @@
         </object-type>
         <object-type name="BloccoDis" sid="674361868130221">
             <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Drop" sid="667439714659520" type="number" />
+            </instance-variables>
             <behaviors>
                 <behavior-type name="Solid" sid="764480866526271">
                     <behavior id="solid" />
+                </behavior-type>
+                <behavior-type name="DestroyOutsideLayout" sid="712830709270357">
+                    <behavior id="destroy" />
                 </behavior-type>
             </behaviors>
             <animation-folder>
@@ -372,6 +380,7 @@
                 <instance-variable name="Counter" sid="350178859543817" type="number" />
                 <instance-variable name="BomberUID" sid="438837913205537" type="number" />
                 <instance-variable name="SolidState" sid="342056253886685" type="boolean" />
+                <instance-variable name="PlayerN" sid="244930546740142" type="number" />
             </instance-variables>
             <behaviors>
                 <behavior-type name="Solid" sid="504219115712778">
@@ -380,7 +389,76 @@
             </behaviors>
             <animation-folder>
                 <animation framecount="2" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="616764024605825" speed="7">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="\\Dbgadc1\programmers\SecondoProgettoConstruct\0_CommonAssets\Sprites\Bomb\Bomb_f01.png">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\progetto lino\Immagini giochino\M\obj_bomb2_001.png">
+                        <collision-poly>
+                            <point x="0.145833" y="0.145833" />
+                            <point x="0.5" y="0" />
+                            <point x="0.854167" y="0.145833" />
+                            <point x="1" y="0.5" />
+                            <point x="0.854167" y="0.854167" />
+                            <point x="0.5" y="1" />
+                            <point x="0.145833" y="0.854167" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\progetto lino\Immagini giochino\M\obj_bomb2_007.png">
+                        <collision-poly>
+                            <point x="0.145833" y="0.145833" />
+                            <point x="0.5" y="0" />
+                            <point x="0.854167" y="0.145833" />
+                            <point x="1" y="0.5" />
+                            <point x="0.854167" y="0.854167" />
+                            <point x="0.5" y="1" />
+                            <point x="0.145833" y="0.854167" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ColorBlue" sid="214251033154727">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Contamina" sid="949464021319366" type="boolean" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="745662239923546" speed="6">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\BackgroundTileB.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Function" sid="541821698012794">
+            <plugin id="Function" />
+        </object-type>
+        <object-type name="BloccoInd" sid="780775087163164">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="777564102664064" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Blocks\SolidBlock.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ColorRed" sid="771256523326612">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Contamina" sid="276367844313800" type="boolean" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="129606580837521" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\BackgroundTileR.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Sprite" sid="909071296702677">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="563155837976014">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="798890204019421" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Bomb\Bomb_f01.png">
                         <collision-poly>
                             <point x="0.145833" y="0.145833" />
                             <point x="0.5" y="0" />
@@ -407,33 +485,127 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Explosion" sid="214251033154727">
+        <object-type name="BombUp" sid="781162968843073">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="133046507332347" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Powerups\BombPowerup.png">
+                        <collision-poly>
+                            <point x="0.03125" y="0.03125" />
+                            <point x="0.5" y="0" />
+                            <point x="0.96875" y="0.03125" />
+                            <point x="1" y="0.5" />
+                            <point x="0.96875" y="0.96875" />
+                            <point x="0.5" y="1" />
+                            <point x="0.03125" y="0.96875" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="RangeUp" sid="806994716259986">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="927369022292887" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Powerups\FlamePowerup.png">
+                        <collision-poly>
+                            <point x="0.03125" y="0.03125" />
+                            <point x="0.5" y="0" />
+                            <point x="0.96875" y="0.03125" />
+                            <point x="1" y="0.5" />
+                            <point x="0.96875" y="0.96875" />
+                            <point x="0.5" y="1" />
+                            <point x="0.03125" y="0.96875" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="SpeedUp" sid="587292182896986">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="103508069316606" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Powerups\SpeedPowerup.png">
+                        <collision-poly>
+                            <point x="0.03125" y="0.03125" />
+                            <point x="0.5" y="0" />
+                            <point x="0.96875" y="0.03125" />
+                            <point x="1" y="0.5" />
+                            <point x="0.96875" y="0.96875" />
+                            <point x="0.5" y="1" />
+                            <point x="0.03125" y="0.96875" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Check" sid="230910946373490">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="766619714802693" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Blocks\Untitled-1.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="P1Wins" sid="181412607982380">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="P2Wins" sid="148814895910261">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="VerniceBlu" sid="826446532853647">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="Fade" sid="864274190250324">
+                <behavior-type name="Fade" sid="496460227936631">
                     <behavior id="Fade" />
                 </behavior-type>
             </behaviors>
             <animation-folder>
-                <animation framecount="5" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="745662239923546" speed="6">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_f00.png" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_f01.png" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_F02.png" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_F03.png" />
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Flame\Flame_F04.png" />
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="786232211376129" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\SPLAT (4).png">
+                        <collision-poly>
+                            <point x="0.32" y="0.32" />
+                            <point x="0.5" y="0.266667" />
+                            <point x="0.653333" y="0.346667" />
+                            <point x="0.856667" y="0.5" />
+                            <point x="0.666667" y="0.666667" />
+                            <point x="0.5" y="0.74" />
+                            <point x="0.273333" y="0.726667" />
+                            <point x="0.26" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Function" sid="541821698012794">
-            <plugin id="Function" />
-        </object-type>
-        <object-type name="BloccoInd" sid="780775087163164">
+        <object-type name="VerniceRossa" sid="489637929801228">
             <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="114441125083103">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
             <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="777564102664064" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\0_CommonAssets\Sprites\Blocks\SolidBlock.png" />
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="100633899878879" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Pellix\Desktop\SPLAT (4)red.png">
+                        <collision-poly>
+                            <point x="0.32" y="0.32" />
+                            <point x="0.5" y="0.266667" />
+                            <point x="0.653333" y="0.346667" />
+                            <point x="0.856667" y="0.5" />
+                            <point x="0.666667" y="0.666667" />
+                            <point x="0.5" y="0.74" />
+                            <point x="0.273333" y="0.726667" />
+                            <point x="0.26" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="Count" sid="164563681752269">
+            <plugin id="Text" />
         </object-type>
     </object-folder>
     <families />
